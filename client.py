@@ -18,10 +18,11 @@ class App:
 		
 	
 if __name__ == "__main__":
-	d = feedparser.parse("http://feeds.feedburner.com/RockPaperShotgun.xml")
+	feedsList = ["http://feeds.feedburner.com/RockPaperShotgun.xml", "http://nedroid.com/feed/"]
+	d = feedparser.parse(feedsList[1])
 	print "Title: " + d.entries[0].title
 	print "Link: " + d.entries[0].link
-	print "Desc: " + d.entries[0].description.replace("&#8217;", "\'")
+	print "Desc: " + d.entries[0].description.replace("&#8217;", "\'").replace("&amp;", "&")
 	print "Published: " + d.entries[0].published
 	print "Updated: " + d.entries[0].updated
 	print "Id " + d.entries[0].id
