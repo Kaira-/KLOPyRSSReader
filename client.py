@@ -1,48 +1,46 @@
 import feedparser
 from PIL import Image, ImageTk
-from Tkinter import *
-from ttk import *
+import Tkinter
+import ttk
 
-class App(Frame):
+class App(ttk.Frame):
     def __init__(self, parent):
-        Frame.__init__(self, parent)
+        ttk.Frame.__init__(self, parent)
         self.parent = parent
 
         self.initUI()
 
     def initUI(self): 
-        self.w = Canvas(self.parent, width=500, height=400)
-        self.w.pack()
-        self.w.create_rectangle(10, 350, 500, 10, fill="white")
-        self.canvas_id = self.w.create_text(15,10,anchor="nw")
-        self.e = Entry(root, width=80)
-        self.e.pack()
-        self.e.delete(0, END)
-        self.e.insert(0, "default value")
-        self.s = self.e.get()
-        self.w.itemconfig(self.canvas_id, text=self.s)
-        self.w.insert(self.canvas_id, 12, "")
-        self.w.update()
+        self.parent.title("KLOPyRSSReader2013")
+        self.pack(fill=Tkinter.BOTH, expand=1)
+        self.style = ttk.Style()
+        ttk.Style.configure(self.style, "TFrame", background="#333")
+
+        self.feedslist = ["http://feeds.feedburner.com/RockPaperShotgun.xml", "http:nedroid.com/feed/"]
+        self.lb = Tkinter.Listbox(self)
+
+        for i in self.feedslist:
+            self.lb.insert(Tkinter.END, i)
+
+        self.lb.place(x=20,y=20)
 	
 if __name__ == "__main__":
-    feedsList = ["http://feeds.feedburner.com/RockPaperShotgun.xml", "http://nedroid.com/feed/"]
-    d = feedparser.parse(feedsList[0])
-    print "Title: " + d.entries[0].title
-    print "Link: " + d.entries[0].link
-    print "Desc: " + d.entries[0].description.replace("&#8217;", "\'").replace("&amp;", "&")
-    print "Published: " + d.entries[0].published
-    print "Updated: " + d.entries[0].updated
-    print "Id " + d.entries[0].id
-    root = Tk()
+    #d = feedparser.parse(feedsList[0])
+    #print "Title: " + d.entries[0].title
+    #print "Link: " + d.entries[0].link
+    #print "Desc: " + d.entries[0].description.replace("&#8217;", "\'").replace("&amp;", "&")
+    #print "Published: " + d.entries[0].published
+    #print "Updated: " + d.entries[0].updated
+    #print "Id " + d.entries[0].id
+    root = Tkinter.Tk()
     app = App(root)
-    menu = Menu(root)
+    menu = Tkinter.Menu(root)
     root.config(menu = menu)
-    fileMenu = Menu(menu)
+    fileMenu = Tkinter.Menu(menu)
     menu.add_cascade(label="File", menu = fileMenu)
     fileMenu.add_command(label="Import new feed...")
     fileMenu.add_separator()
     fileMenu.add_command(label="Exit")
-    rtitle = root.title("KLOPyRSSReader")
     root.geometry("600x600+300+300")
     root.mainloop()
 
