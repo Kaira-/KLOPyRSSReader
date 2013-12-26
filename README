@@ -1,1 +1,1 @@
-Requirements: feedparser (installable via pip), Tkinter
+Requirements: feedparser (installable via pip), Tkinter, ttk
