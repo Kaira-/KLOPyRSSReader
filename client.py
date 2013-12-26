@@ -15,12 +15,14 @@ class App(ttk.Frame):
         self.pack(fill=Tkinter.BOTH, expand=1)
         self.style = ttk.Style()
         ttk.Style.configure(self.style, "TFrame", background="#333")
+        
+        #feeds have names as first element and UI as second
+        self.feedslist = [["RPS","http://feeds.feedburner.com/RockPaperShotgun.xml"], ["Nedroid Picture Diary", "http:nedroid.com/feed/"]]
+        self.lb = Tkinter.Listbox(self, width=24)
 
-        self.feedslist = ["http://feeds.feedburner.com/RockPaperShotgun.xml", "http:nedroid.com/feed/"]
-        self.lb = Tkinter.Listbox(self)
-
+        #when inserting feeds into the listbox, use the user-given name instead of URL
         for i in self.feedslist:
-            self.lb.insert(Tkinter.END, i)
+            self.lb.insert(Tkinter.END, i[0])
 
         self.lb.place(x=20,y=20)
 	
