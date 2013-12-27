@@ -21,6 +21,7 @@ class App(ttk.Frame):
         self.lb = Tkinter.Listbox(self, width=24)
 
         #when inserting feeds into the listbox, use the user-given name instead of URL
+        #we could also use the title of the feed, maybe that's even better
         for i in self.feedslist:
             self.lb.insert(Tkinter.END, i[0])
 
@@ -43,6 +44,7 @@ if __name__ == "__main__":
     fileMenu.add_command(label="Import new feed...")
     fileMenu.add_separator()
     fileMenu.add_command(label="Exit")
-    root.geometry("600x600+300+300")
+    #root.geometry("600x600+300+300")
+    root.minsize(600,400)
     root.mainloop()
 
