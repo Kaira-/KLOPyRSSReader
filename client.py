@@ -18,14 +18,14 @@ class App(ttk.Frame):
         
         #feeds have names as first element and UI as second
         self.feedslist = [["RPS","http://feeds.feedburner.com/RockPaperShotgun.xml"], ["Nedroid Picture Diary", "http:nedroid.com/feed/"]]
-        self.lb = Tkinter.Listbox(self, width=24)
+        self.lb = Tkinter.Listbox(self, width=20)
 
         #when inserting feeds into the listbox, use the user-given name instead of URL
         #we could also use the title of the feed, maybe that's even better
         for i in self.feedslist:
             self.lb.insert(Tkinter.END, i[0])
 
-        self.lb.place(x=20,y=20)
+        self.lb.place(x=10,y=10)
 	
 if __name__ == "__main__":
     #d = feedparser.parse(feedsList[0])
