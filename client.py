@@ -2,6 +2,7 @@ import feedparser
 import Tkinter
 from Tkinter import *
 import ttk
+import tkMessageBox
 
 class App(ttk.Frame):
     def __init__(self, parent):
@@ -9,7 +10,6 @@ class App(ttk.Frame):
         self.parent = parent
         self.initUI()
 
-        
     def initUI(self): 
         self.parent.title("KLOPyRSSReader2013")
         self.pack(fill=Tkinter.BOTH, expand=1)
@@ -18,23 +18,20 @@ class App(ttk.Frame):
         
         #feeds have names as first element and UI as second
         self.feedslist = [["RPS","http://feeds.feedburner.com/RockPaperShotgun.xml"], ["Nedroid Picture Diary", "http:nedroid.com/feed/"]]
-        self.lb = Tkinter.Listbox(self, width=80)
+        self.lb = Tkinter.Listbox(self, width=20)
 
         #when inserting feeds into the listbox, use the user-given name instead of URL
         #we could also use the title of the feed, maybe that's even better
         for i in self.feedslist:
             self.lb.insert(Tkinter.END, i[0])
             self.lb.place(x=10,y=10)
+
     def hello(menu):
         print "Hello!"
-        e = Entry(root)
-        e.pack()
+        tkMessageBox.askquestion("Example question", "Hello world?")
+        #e = Entry(root)
+        #e.pack()
 
-        
-        
-        
-
-        
 if __name__ == "__main__":
     #d = feedparser.parse(feedsList[0])
     #print "Title: " + d.entries[0].title
