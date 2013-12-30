@@ -36,12 +36,28 @@ class App(ttk.Frame):
             self.lb.place(x=10,y=10)
 
     def hello(menu):
-        print "Hello!"
-        #w = popupWindow(self.parent)
-        #self.parent.wait_window(self.w)
-        tkMessageBox.askquestion("Example question", "Hello world?")
-        #e = Entry(root)
-        #e.pack()
+        
+
+        top = Toplevel(menu)
+
+        Label(top, text="Value").pack()
+
+        e = Entry(top)
+        e.pack(padx=5)
+
+        b = Button(top, text="OK", command=menu.ok)
+        b.pack(pady=5)
+
+    def ok(menu):
+
+        print "value is", e.get()
+
+        top.destroy()
+        
+        
+        
+
+
 
 class popupWindow(ttk.Frame):
     def __init__(self, parent):
