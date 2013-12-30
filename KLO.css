@@ -1,0 +1,27 @@
+body {
+	background-color: black;
+	text-align: center;
+
+}
+
+.contents {
+	float: left;
+	background-color: white;
+	margin-right: 20px;
+	margin-left: 20px;
+	height: 100%;
+	
+}
+
+.contents ul, li {
+	margin-right: 20px;
+}
+
+.Main {
+	width: 90%;
+	height: 100%;
+	background-color: red;
+	padding: 10px;
+	left: 100px;
+	
+}
