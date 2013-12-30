@@ -1,15 +1,16 @@
 import feedparser
 from PIL import Image, ImageTk
 import Tkinter
+from Tkinter import *
 import ttk
 
 class App(ttk.Frame):
     def __init__(self, parent):
         ttk.Frame.__init__(self, parent)
         self.parent = parent
-
         self.initUI()
 
+        
     def initUI(self): 
         self.parent.title("KLOPyRSSReader2013")
         self.pack(fill=Tkinter.BOTH, expand=1)
@@ -24,10 +25,17 @@ class App(ttk.Frame):
         #we could also use the title of the feed, maybe that's even better
         for i in self.feedslist:
             self.lb.insert(Tkinter.END, i[0])
-    def hello():
+            self.lb.place(x=10,y=10)
+    def hello(menu):
         print "Hello!"
+        e = Entry(root)
+        e.pack()
 
-        self.lb.place(x=10,y=10)
+        
+        
+        
+
+        
 if __name__ == "__main__":
     #d = feedparser.parse(feedsList[0])
     #print "Title: " + d.entries[0].title
