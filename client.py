@@ -1,5 +1,4 @@
 import feedparser
-from PIL import Image, ImageTk
 import Tkinter
 from Tkinter import *
 import ttk
