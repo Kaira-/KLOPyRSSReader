@@ -35,7 +35,7 @@ class App(ttk.Frame):
             self.lb.insert(Tkinter.END, i[0])
             self.lb.place(x=10,y=10)
 
-    def hello(self, menu):
+    def hello(menu):
         print "Hello!"
         #w = popupWindow(self.parent)
         #self.parent.wait_window(self.w)
