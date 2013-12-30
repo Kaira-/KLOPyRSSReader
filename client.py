@@ -6,14 +6,23 @@ import tkMessageBox
 
 class App(ttk.Frame):
     def __init__(self, parent):
+        self.root = parent
         ttk.Frame.__init__(self, parent)
         self.parent = parent
         self.initUI()
 
-    def initUI(self): 
+    def initUI(self):
+        self.menu = Tkinter.Menu(self.parent)
+        self.root.config(menu = self.menu)
+        self.fileMenu = Tkinter.Menu(self.menu)
+        self.menu.add_cascade(label="File", menu = self.fileMenu)
+        self.fileMenu.add_command(label="Import new feed...", command=self.hello)
+        self.fileMenu.add_separator()
+        self.fileMenu.add_command(label="Exit", command=self.root.destroy)
         self.parent.title("KLOPyRSSReader2013")
         self.pack(fill=Tkinter.BOTH, expand=1)
         self.style = ttk.Style()
+        self.root.minsize(600,400)
         ttk.Style.configure(self.style, "TFrame", background="#333")
         
         #feeds have names as first element and UI as second
@@ -26,11 +35,26 @@ class App(ttk.Frame):
             self.lb.insert(Tkinter.END, i[0])
             self.lb.place(x=10,y=10)
 
-    def hello(menu):
+    def hello(self, menu):
         print "Hello!"
+        #w = popupWindow(self.parent)
+        #self.parent.wait_window(self.w)
         tkMessageBox.askquestion("Example question", "Hello world?")
         #e = Entry(root)
         #e.pack()
+
+class popupWindow(ttk.Frame):
+    def __init__(self, parent):
+        top = self.top = Tkinter.Toplevel(master)
+        self.l = Label(top, text = "Hello World!")
+        self.l.pack()
+        self.e = Tkinter.Entry(top)
+        self.e.pack()
+        self.b = Tkinter.Button(top, text="Ok", command=self.cleanup)
+        self.b.pack()
+    def cleanup(self):
+        self.value = self.e.get()
+        self.top.destroy()
 
 if __name__ == "__main__":
     #d = feedparser.parse(feedsList[0])
@@ -42,14 +66,5 @@ if __name__ == "__main__":
     #print "Id " + d.entries[0].id
     root = Tkinter.Tk()
     app = App(root)
-    menu = Tkinter.Menu(root)
-    root.config(menu = menu)
-    fileMenu = Tkinter.Menu(menu)
-    menu.add_cascade(label="File", menu = fileMenu)
-    fileMenu.add_command(label="Import new feed...", command=app.hello)
-    fileMenu.add_separator()
-    fileMenu.add_command(label="Exit", command=root.destroy)
-    #root.geometry("600x600+300+300")
-    root.minsize(600,400)
     root.mainloop()
 
