@@ -31,6 +31,13 @@
 	margin-top: 5px;
 }
 
+.mejs-currenttime {
+	color: white;
+	position: absolute;
+	top: 88px;
+	
+}
+
 div.audio-player {
     position: relative;
     width: 800px;
@@ -74,7 +81,7 @@ div.audio-player {
     width: 24px;
     height: 24px;
     top: 35px;
-    left: 135px;
+    left: 195px;
 	background: transparent url(../img/play.png) 0 0;
     
 }
@@ -84,11 +91,30 @@ div.audio-player {
     width: 24px;
     height: 24px;
     top: 35px;
-    left: 135px;
+    left: 195px;
 	background: transparent url(../img/pause.png) 0 0;
     
 }
- 
+
+.mejs-controls 
+.mejs-nexttrack button
+{
+	width: 24px;
+    height: 24px;
+    top: 35px;
+    left: 225px;
+	background: transparent url(../img/next.png) 0 0;
+}
+
+.mejs-controls 
+.mejs-prevtrack button
+{
+	width: 24px;
+    height: 24px;
+    top: 35px;
+    left: 165px;
+	background: transparent url(../img/prev.png) 0 0;
+}
 
  
 .mejs-controls 
