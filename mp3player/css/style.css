@@ -78,8 +78,8 @@ div.audio-player {
  
 .mejs-controls .mejs-play button,
 .mejs-controls .mejs-pause button {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     top: 35px;
     left: 195px;
 	background: transparent url(../img/play.png) 0 0;
@@ -88,8 +88,8 @@ div.audio-player {
 .mejs-controls 
 .mejs-pause button
 {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     top: 35px;
     left: 195px;
 	background: transparent url(../img/pause.png) 0 0;
@@ -99,43 +99,52 @@ div.audio-player {
 .mejs-controls 
 .mejs-nexttrack button
 {
-	width: 24px;
-    height: 24px;
+	width: 32px;
+    height: 32px;
     top: 35px;
-    left: 225px;
+    left: 230px;
 	background: transparent url(../img/next.png) 0 0;
 }
 
 .mejs-controls 
 .mejs-prevtrack button
 {
-	width: 24px;
-    height: 24px;
+	width: 32px;
+    height: 32px;
     top: 35px;
-    left: 165px;
+    left: 160px;
 	background: transparent url(../img/prev.png) 0 0;
 }
 
  
 .mejs-controls 
 .mejs-mute button{
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 23px;
     top: 70px;
-    left: 140px;
+    left: 145px;
 	background: transparent url(../img/mute.png) 0 0;
 	
     
 }
 .mejs-controls 
 .mejs-unmute button {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     top: 70px;
-    left: 140px;
+    left: 145px;
 	background: transparent url(../img/unmute.png) 0 0;
 	
     
+}
+
+.mejs-controls 
+.mejs-shuffle-on button {
+	width: 32px;
+    height: 32px;
+    top: 35px;
+    left: 265px;
+	background: transparent url(../img/loop.png) 0 0;
 }
  
 .mejs-controls div.mejs-horizontal-volume-slider {
@@ -214,7 +223,7 @@ div.audio-player {
 .mejs-time-rail 
 .mejs-time-current {
     width: 0;
-    background: #64b44c;
+    background: url(../img/slider.jpg);
 }
 
 .mejs-controls 
@@ -226,7 +235,7 @@ div.audio-player {
     height: 23px;
     top: -26px;
     margin-left: -17px;
-    background: url(../img/time-box.png);
+    background: url(../img/slider.jpg);
 }
  
 .mejs-controls 
@@ -251,7 +260,7 @@ div.audio-player {
     width: 24px;
     height: 24px;
     top: -4px;
-    background: url(../img/search.png) no-repeat;
+    background: url(../img/handle.png) no-repeat;
 }
  
 .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle { 
