@@ -3,21 +3,30 @@
  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="js/mediaelement-and-player.min.js"></script>
+	<script src="js/mep-feature-playlist.js"></script>
     <link rel="stylesheet" href="css/style.css" media="screen">
+	
 </head>
 <body>
 	<div class="audio-player">
-	<h1>Demo</h1>
-	<audio id="audio-player" src="Gangnam_style.mp3" type="audio/mp3" controls="controls"></audio>
+	<h1>../media/Gangnam_style.mp3</h1>
+	<audio id="audio-player" src="Gangnam_style.mp3" type="audio/mp3" controls="controls">
+    <source src="Gangnam_style.mp3" title="Gangnam style" type="audio/mp3"/>
+    <source src="scarborough_fair.mp3" title="scarborough fair" type="audio/mp3"/>
+</audio>
 	<script>
-    $(document).ready(function() {
-        $('#audio-player').mediaelementplayer({
-            alwaysShowControls: true,
-            features: ['playpause','volume','progress'],
-            audioVolume: 'horizontal',
-            audioWidth: 400,
-            audioHeight: 120
-        });
+$(function(){
+    $('audio,video').mediaelementplayer({
+        loop: true,
+        shuffle: true,
+        playlist: true,
+        audioHeight: 30,
+        playlistposition: 'bottom',
+        features: ['playlistfeature', 'prevtrack', 'playpause', 'nexttrack', 'loop', 'shuffle', 'playlist', 'current', 'progress', 'duration', 'volume'],
     });
+});
 </script>
+
+
+
 </body>
