@@ -1,3 +1,8 @@
+body {
+
+background: #000000;
+}
+
 .audio-player,
 .audio-player div,
 .audio-player h1,
@@ -12,9 +17,10 @@
 }
 .audio-player ul {
 	position: absolute;
-	top: 105px;
+	top: 405px;
 	width: 400px;
-	height: 200px;
+	height: 400px;
+
 	color: white;
 	background: #4c4e5a;
     background: -webkit-linear-gradient(top, #4c4e5a 0%, #2c2d33 100%);
@@ -24,6 +30,7 @@
     background: linear-gradient(top, #4c4e5a 0%, #2c2d33 100%);
  
     -webkit-border-radius: 3px;
+	-webkit-padding-start: 0em;
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
@@ -31,17 +38,25 @@
 	margin-top: 5px;
 }
 
+
+
+.mejs-playlist li.current {
+	color: red;
+}
+
+
+
 .mejs-currenttime {
 	color: white;
 	position: absolute;
-	top: 88px;
+	top: 360px;
 	
 }
 
 div.audio-player {
     position: relative;
-    width: 800px;
-    height: 120px;
+    width: 100%;
+    height: 400px;
 	
  
     background: #4c4e5a;
@@ -56,17 +71,8 @@ div.audio-player {
     border-radius: 3px;
 }
 
-.audio-player h1 {
-    position: absolute;
-    top: 37px;
-    left: 165px;
- 
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    font-size: 14px;
-    color: #ececec;
-    text-shadow: 1px 1px 1px rgba(0,0,0, .5);
-}
+
+
 
 .mejs-controls 
 .mejs-button button {
@@ -78,61 +84,61 @@ div.audio-player {
  
 .mejs-controls .mejs-play button,
 .mejs-controls .mejs-pause button {
-    width: 32px;
-    height: 32px;
-    top: 35px;
-    left: 195px;
-	background: transparent url(../img/play.png) 0 0;
+    width: 48px;
+    height: 48px;
+    top: 70px;
+    left: 110px;
+	background: transparent url(../img/play2.png) 0 0;
     
 }
 .mejs-controls 
 .mejs-pause button
 {
-    width: 32px;
-    height: 32px;
-    top: 35px;
-    left: 195px;
-	background: transparent url(../img/pause.png) 0 0;
+    width: 48px;
+    height: 48px;
+    top: 70px;
+    left: 110px;
+	background: transparent url(../img/pause2.png) 0 0;
     
 }
 
 .mejs-controls 
 .mejs-nexttrack button
 {
-	width: 32px;
-    height: 32px;
-    top: 35px;
-    left: 230px;
-	background: transparent url(../img/next.png) 0 0;
+	width: 48px;
+    height: 48px;
+    top: 70px;
+    left: 165px;
+	background: transparent url(../img/next2.png) 0 0;
 }
 
 .mejs-controls 
 .mejs-prevtrack button
 {
-	width: 32px;
-    height: 32px;
-    top: 35px;
-    left: 160px;
-	background: transparent url(../img/prev.png) 0 0;
+	width: 48px;
+    height: 48px;
+    top: 70px;
+    left: 57px;
+	background: transparent url(../img/prev2.png) 0 0;
 }
 
  
 .mejs-controls 
 .mejs-mute button{
-    width: 32px;
-    height: 23px;
-    top: 70px;
-    left: 145px;
+    width: 24px;
+    height: 24px;
+    top: 150px;
+    left: 25px;
 	background: transparent url(../img/mute.png) 0 0;
 	
     
 }
 .mejs-controls 
 .mejs-unmute button {
-    width: 32px;
-    height: 32px;
-    top: 70px;
-    left: 145px;
+    width: 24px;
+    height: 24px;
+    top: 150px;
+    left: 25px;
 	background: transparent url(../img/unmute.png) 0 0;
 	
     
@@ -140,17 +146,26 @@ div.audio-player {
 
 .mejs-controls 
 .mejs-shuffle-on button {
-	width: 32px;
-    height: 32px;
-    top: 35px;
-    left: 265px;
-	background: transparent url(../img/loop.png) 0 0;
+	width: 48px;
+    height: 48px;
+    top: 70px;
+    left: 220px;
+	background: transparent url(../img/loop2.png) 0 0;
+}
+
+.mejs-controls 
+.mejs-shuffle-off button {
+	width: 48px;
+    height: 48px;
+    top: 70px;
+    left: 220px;
+	background: transparent url(../img/loop2.png) 0 0;
 }
  
 .mejs-controls div.mejs-horizontal-volume-slider {
     position: absolute;
-    top: 77px;
-    left: 165px;
+    top: 157px;
+    left: 65px;
     cursor: pointer;
 	
 }
@@ -158,7 +173,7 @@ div.audio-player {
 .mejs-controls
 .mejs-horizontal-volume-slider 
 .mejs-horizontal-volume-total {
-    width: 200px;
+    width: 400px;
     height: 8px;
     background: #212227;
  
@@ -188,14 +203,14 @@ div.audio-player {
 
 .mejs-controls div
 .mejs-time-rail {
-	width: 400px;
+	width: 100%;
  }
  
 .mejs-controls 
 .mejs-time-rail span {
     position: absolute;
     display: block;
-    width: 800px;
+    width: 100%;
     height: 15px;
     left: 0;
     bottom: 0;
@@ -235,7 +250,7 @@ div.audio-player {
     height: 23px;
     top: -26px;
     margin-left: -17px;
-    background: url(../img/slider.jpg);
+    
 }
  
 .mejs-controls 
@@ -260,6 +275,7 @@ div.audio-player {
     width: 24px;
     height: 24px;
     top: -4px;
+	
     background: url(../img/handle.png) no-repeat;
 }
  

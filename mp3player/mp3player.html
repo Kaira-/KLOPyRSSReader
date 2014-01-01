@@ -9,12 +9,17 @@
 </head>
 <body>
 	<div class="audio-player">
+	<audio id="audio-player" title="current" controls="controls">
+    <source src="Gangnam_style.mp3" title="Gangnam style - PSY" type="audio/mp3"/>
+    <source src="scarborough_fair.mp3" title="scarborough fair - Gregorian" type="audio/mp3"/>
+	<source src="nothing else matters.mp3" title="Nothing else matters - Gregorian" type="audio/mp3"/>
+	<source src="I still haven't found what I'm looking for.mp3" title="I still haven't found what I'm looking for - Gregorian" type="audio/mp3"/>
+	<source src="Losing my religion.mp3" title="Losing my religion - Gregorian" type="audio/mp3"/>
+	<source src="Auld Lang Syne.mp3" title="Auld Lang Syne - Gregorian" type="audio/mp3"/>
+	<source src="Ave maria.mp3" title="Ave Maria - Gregorian" type="audio/mp3"/>
+	</audio>
 	
-	<audio id="audio-player" src="Gangnam_style.mp3" type="audio/mp3" controls="controls">
-    <source src="Gangnam_style.mp3" title="Gangnam style" type="audio/mp3"/>
-    <source src="scarborough_fair.mp3" title="scarborough fair" type="audio/mp3"/>
-</audio>
-	<script>
+<script>
 $(function(){
     $('audio,video').mediaelementplayer({
         loop: true,
