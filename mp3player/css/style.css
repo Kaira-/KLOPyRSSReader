@@ -38,6 +38,7 @@ background: #000000;
 	margin-top: 5px;
 }
 
+
 .input {
 	position: absolute;
 	top: 500px;
@@ -50,6 +51,9 @@ background: #000000;
 .input p {
 	color: white;
 }
+
+
+
 
 .mejs-playlist li.current {
 	color: red;
@@ -285,7 +289,11 @@ div.audio-player {
     display: block;
     width: 24px;
     height: 24px;
+
     top: -10px;
+
+    top: -4px;
+
 	
     background: url(../img/handle.png) no-repeat;
 }
