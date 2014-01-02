@@ -32,9 +32,9 @@ class App(ttk.Frame):
         self.lb.bind("<Double-Button-1>", self.onDouble)
         self.lb.grid(row = 0, column = 0)
         
-        self.textbox = Tkinter.Text(self, state = "disabled", width=48)
+        self.textbox = Tkinter.Text(self, width=48, wrap=Tkinter.WORD)
         self.textbox.grid(row = 0, column = 1)
-        self.textbox.insert(Tkinter.END, "Hello world!")
+        #self.textbox.insert(0.0, "Hello world!")
 
         for i in self.feedslist:
             d = feedparser.parse(i)
@@ -96,6 +96,7 @@ class App(ttk.Frame):
         widget = event.widget
         selection = widget.curselection()
         index = selection[0]
+        self.textbox.insert(Tkinter.END, self.feedstitles[int(index)] + "\r\n")
 
 if __name__ == "__main__":
     #d = feedparser.parse(feedsList[0])
