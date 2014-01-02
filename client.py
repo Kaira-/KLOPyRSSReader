@@ -28,7 +28,10 @@ class App(ttk.Frame):
         ttk.Style.configure(self.style, "TFrame", background="#333")
         
         self.lb = Tkinter.Listbox(self, width=20)
-        
+        #bind doubleclick to onDouble-function
+        self.lb.bind("<Double-Button-1>", self.onDouble)
+        self.lb.grid(row = 0, column = 0, sticky = Tkinter.W)
+
         for i in self.feedslist:
             d = feedparser.parse(i)
             self.feedstitles.append(d.feed.title)
@@ -85,6 +88,11 @@ class App(ttk.Frame):
 
         for i in self.feedstitles:
             self.lb.insert(Tkinter.END, i)
+    
+    def onDouble(self, event):
+        widget = event.widget
+        selection = widget.curselection()
+        index = selection[0]
 
 if __name__ == "__main__":
     #d = feedparser.parse(feedsList[0])
