@@ -30,11 +30,17 @@ class App(ttk.Frame):
         self.lb = Tkinter.Listbox(self, width=36)
         #bind doubleclick to onDouble-function
         self.lb.bind("<Double-Button-1>", self.onDouble)
-        self.lb.grid(row = 0, column = 0)
+        self.lb.grid(row = 0, column = 0, sticky=Tkinter.NW)
         
-        self.textbox = Tkinter.Text(self, width=48, wrap=Tkinter.WORD)
-        self.textbox.grid(row = 0, column = 1)
+        self.textbox = Tkinter.Text(self, width=48, wrap=Tkinter.WORD, state=Tkinter.DISABLED)
+        self.textbox.grid(row = 0, column = 1, columnspan=4, rowspan=4, sticky=Tkinter.NW)
         #self.textbox.insert(0.0, "Hello world!")
+
+        self.refreshbutton = Tkinter.Button(self, text="Refresh feed")
+        self.refreshbutton.grid(row=4, column=1, sticky=Tkinter.W)
+
+        self.deletefeedbutton = Tkinter.Button(self, text="Delete selcted feed")
+        self.deletefeedbutton.grid(row = 4, column = 0, sticky = Tkinter.W)
 
         for i in self.feedslist:
             d = feedparser.parse(i)
@@ -96,7 +102,9 @@ class App(ttk.Frame):
         widget = event.widget
         selection = widget.curselection()
         index = selection[0]
+        self.textbox.config(state=Tkinter.NORMAL)
         self.textbox.insert(Tkinter.END, self.feedstitles[int(index)] + "\r\n")
+        self.textbox.config(state=Tkinter.DISABLED)
 
 if __name__ == "__main__":
     #d = feedparser.parse(feedsList[0])
