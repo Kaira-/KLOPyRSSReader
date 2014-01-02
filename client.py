@@ -27,10 +27,14 @@ class App(ttk.Frame):
         self.root.minsize(600,400)
         ttk.Style.configure(self.style, "TFrame", background="#333")
         
-        self.lb = Tkinter.Listbox(self, width=20)
+        self.lb = Tkinter.Listbox(self, width=36)
         #bind doubleclick to onDouble-function
         self.lb.bind("<Double-Button-1>", self.onDouble)
-        self.lb.grid(row = 0, column = 0, sticky = Tkinter.W)
+        self.lb.grid(row = 0, column = 0)
+        
+        self.textbox = Tkinter.Text(self, state = "disabled", width=48)
+        self.textbox.grid(row = 0, column = 1)
+        self.textbox.insert(Tkinter.END, "Hello world!")
 
         for i in self.feedslist:
             d = feedparser.parse(i)
@@ -40,7 +44,6 @@ class App(ttk.Frame):
         #we could also use the title of the feed, maybe that's even better
         for i in self.feedstitles:
             self.lb.insert(Tkinter.END, i)
-            self.lb.place(x=10,y=10)
 
     def hello(self):
         top = self.top = Tkinter.Toplevel(self)
