@@ -1,3 +1,5 @@
 http://feeds.feedburner.com/RockPaperShotgun.xml
 http://nedroid.com/feed/
 #This is a comment line
+http://feeds.arstechnica.com/arstechnica/index?format=xml
+http://www.iltalehti.fi/rss.xml

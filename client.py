@@ -1,6 +1,5 @@
 import feedparser
 import Tkinter
-from Tkinter import *
 import ttk
 import tkMessageBox
 
@@ -41,18 +40,21 @@ class App(ttk.Frame):
             self.lb.place(x=10,y=10)
 
     def hello(self):
-        top = self.top = Toplevel(self)
+        top = self.top = Tkinter.Toplevel(self)
 
-        Label(top, text="Value").pack()
+        Tkinter.Label(top, text="Value").pack()
         
-        self.e = Entry(top, text="default")
+        self.e = Tkinter.Entry(top, text="default")
         self.e.pack(padx=5)
 
-        b = Button(top, text="OK", command=self.ok)
+        b = Tkinter.Button(top, text="OK", command=self.ok)
         b.pack(pady=5)
 
     def ok(self):
-        print "value is", self.e.get()
+        feed = self.e.get()
+        print "value is " + feed
+        
+        self.insertFeedToFile(feed)
 
         self.top.destroy()
   
@@ -66,6 +68,23 @@ class App(ttk.Frame):
         print "Number of feeds: " + str(len(self.feedslist))
         for i in self.feedslist:
             print i
+
+    def insertFeedToFile(self, feed):
+        self.feedslist.append(feed)
+        with open("feeds.txt", "a") as f:
+            f.write(feed)
+
+        self.refreshFeedsList()
+
+    def refreshFeedsList(self):
+        self.lb.delete(0, Tkinter.END)
+        self.feedstitles = []
+        for i in self.feedslist:
+            d = feedparser.parse(i)
+            self.feedstitles.append(d.feed.title)
+
+        for i in self.feedstitles:
+            self.lb.insert(Tkinter.END, i)
 
 if __name__ == "__main__":
     #d = feedparser.parse(feedsList[0])
