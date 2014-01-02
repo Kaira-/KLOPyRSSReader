@@ -25,7 +25,6 @@ class App(ttk.Frame):
         self.root.minsize(600,400)
         ttk.Style.configure(self.style, "TFrame", background="#333")
         
-        
         #feeds have names as first element and UI as second
         self.feedslist = [["RPS","http://feeds.feedburner.com/RockPaperShotgun.xml"], ["Nedroid Picture Diary", "http:nedroid.com/feed/"]]
         self.lb = Tkinter.Listbox(self, width=20)
@@ -37,42 +36,19 @@ class App(ttk.Frame):
             self.lb.place(x=10,y=10)
 
     def hello(self):
-        
-
         top = self.top = Toplevel(self)
 
         Label(top, text="Value").pack()
         
         self.e = Entry(top, text="default")
         self.e.pack(padx=5)
-        
 
         b = Button(top, text="OK", command=self.ok)
         b.pack(pady=5)
 
     def ok(self):
-        
         print "value is", self.e.get()
 
-        self.top.destroy()
-        
-        
-        
-
-
-
-class popupWindow(ttk.Frame):
-    def __init__(self, parent):
-        top = self.top = Tkinter.Toplevel(master)
-        self.l = Label(top, text = "Hello World!")
-        self.l.pack()
-        self.e = Tkinter.Entry(top)
-        self.e.pack()
-        self.b = Tkinter.Button(top, text="Ok", command=self.cleanup)
-        self.b.pack()
-
-    def cleanup(self):
-        self.value = self.e.get()
         self.top.destroy()
 
 if __name__ == "__main__":
