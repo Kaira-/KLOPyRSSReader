@@ -10,6 +10,7 @@ class App(ttk.Frame):
         ttk.Frame.__init__(self, parent)
         self.parent = parent
         self.feedslist = []
+        self.feedstitles = []
         self.readFeedsFromFile()
         self.initUI()
         
@@ -22,17 +23,21 @@ class App(ttk.Frame):
         self.fileMenu.add_separator()
         self.fileMenu.add_command(label="Exit", command=self.root.destroy)
         self.parent.title("KLOPyRSSReader2013")
-        self.pack(fill=Tkinter.BOTH, expand=1)
+        self.pack(fill = Tkinter.BOTH, expand=1)
         self.style = ttk.Style()
         self.root.minsize(600,400)
         ttk.Style.configure(self.style, "TFrame", background="#333")
         
         self.lb = Tkinter.Listbox(self, width=20)
+        
+        for i in self.feedslist:
+            d = feedparser.parse(i)
+            self.feedstitles.append(d.feed.title)
 
         #when inserting feeds into the listbox, use the user-given name instead of URL
         #we could also use the title of the feed, maybe that's even better
-        for i in self.feedslist:
-            self.lb.insert(Tkinter.END, i[0])
+        for i in self.feedstitles:
+            self.lb.insert(Tkinter.END, i)
             self.lb.place(x=10,y=10)
 
     def hello(self):
