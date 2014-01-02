@@ -9,6 +9,8 @@ class App(ttk.Frame):
         self.root = parent
         ttk.Frame.__init__(self, parent)
         self.parent = parent
+        self.feedslist = []
+        self.readFeedsFromFile()
         self.initUI()
         
     def initUI(self):
@@ -25,8 +27,6 @@ class App(ttk.Frame):
         self.root.minsize(600,400)
         ttk.Style.configure(self.style, "TFrame", background="#333")
         
-        #feeds have names as first element and UI as second
-        self.feedslist = [["RPS","http://feeds.feedburner.com/RockPaperShotgun.xml"], ["Nedroid Picture Diary", "http:nedroid.com/feed/"]]
         self.lb = Tkinter.Listbox(self, width=20)
 
         #when inserting feeds into the listbox, use the user-given name instead of URL
@@ -50,6 +50,17 @@ class App(ttk.Frame):
         print "value is", self.e.get()
 
         self.top.destroy()
+  
+    def readFeedsFromFile(self):
+        with open("feeds.txt") as f:
+            for line in f.readlines():
+                string = line.lstrip()
+                if (string[0] == '#'):
+                    continue
+                self.feedslist.append(string)
+        print "Number of feeds: " + str(len(self.feedslist))
+        for i in self.feedslist:
+            print i
 
 if __name__ == "__main__":
     #d = feedparser.parse(feedsList[0])

@@ -1,0 +1,3 @@
+http://feeds.feedburner.com/RockPaperShotgun.xml
+http://nedroid.com/feed/
+#This is a comment line
