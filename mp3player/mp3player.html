@@ -9,7 +9,8 @@
 </head>
 <body>
 	<div class="audio-player">
-	<audio id="audio-player" title="current" controls="controls">
+	
+	<audio id="audio-player" controls="controls">
     <source src="Gangnam_style.mp3" title="Gangnam style - PSY" type="audio/mp3"/>
     <source src="scarborough_fair.mp3" title="scarborough fair - Gregorian" type="audio/mp3"/>
 	<source src="nothing else matters.mp3" title="Nothing else matters - Gregorian" type="audio/mp3"/>
@@ -17,19 +18,54 @@
 	<source src="Losing my religion.mp3" title="Losing my religion - Gregorian" type="audio/mp3"/>
 	<source src="Auld Lang Syne.mp3" title="Auld Lang Syne - Gregorian" type="audio/mp3"/>
 	<source src="Ave maria.mp3" title="Ave Maria - Gregorian" type="audio/mp3"/>
-	</audio>
 	
+	</audio>
+	</div>
+	<div class="input">
+	<p>Select a .mp3 file</p>
+	<input type="file" id="file" />
+	</div>
 <script>
 $(function(){
     $('audio,video').mediaelementplayer({
         loop: true,
-        shuffle: true,
+        shuffle: false,
         playlist: true,
         audioHeight: 30,
         playlistposition: 'bottom',
         features: ['playlistfeature', 'prevtrack', 'playpause', 'nexttrack', 'loop', 'shuffle', 'playlist', 'current', 'progress', 'volume'],
     });
 });
+
+var objectUrl;
+
+$("#audio").on("canplaythrough", function(e){
+    var seconds = e.currentTarget.duration;
+    var duration = moment.duration(seconds, "seconds");
+    
+    var time = "";
+    var hours = duration.hours();
+    if (hours > 0) { time = hours + ":" ; }
+    
+    time = time + duration.minutes() + ":" + duration.seconds();
+    $("#duration").text(time);
+    
+    URL.revokeObjectURL(objectUrl);
+});
+
+$("#file").change(function(e){
+    var file = e.currentTarget.files[0];
+   
+    $("#filename").text(file.name);
+    $("#filetype").text(file.type);
+    $("#filesize").text(file.size);
+    
+    objectUrl = URL.createObjectURL(file);
+    $("#audio-player").prop("src", objectUrl);
+	$( "audio" ).append( '"<source src="'+objectUrl+'" type="audio/mp3"' );
+});
+
+
 </script>
 
 
