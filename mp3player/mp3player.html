@@ -12,19 +12,13 @@
 	
 	<audio id="audio-player" controls="controls">
     <source src="Gangnam_style.mp3" title="Gangnam style - PSY" type="audio/mp3"/>
-    <source src="scarborough_fair.mp3" title="scarborough fair - Gregorian" type="audio/mp3"/>
-	<source src="nothing else matters.mp3" title="Nothing else matters - Gregorian" type="audio/mp3"/>
-	<source src="I still haven't found what I'm looking for.mp3" title="I still haven't found what I'm looking for - Gregorian" type="audio/mp3"/>
-	<source src="Losing my religion.mp3" title="Losing my religion - Gregorian" type="audio/mp3"/>
-	<source src="Auld Lang Syne.mp3" title="Auld Lang Syne - Gregorian" type="audio/mp3"/>
-	<source src="Ave maria.mp3" title="Ave Maria - Gregorian" type="audio/mp3"/>
+    
 	
 	</audio>
 	</div>
 	<div class="input">
 	<p>Select a .mp3 file</p>
 	<input type="file" id="file" />
-	<button id="add">Add</button>
 	</div>
 <script>
 $(function(){
@@ -39,8 +33,8 @@ $(function(){
 });
 
 var objectUrl;
-
-$("#audio").on("canplaythrough", function(e){
+var i;
+$("#file").on("canplaythrough", function(e){
     var seconds = e.currentTarget.duration;
     var duration = moment.duration(seconds, "seconds");
     
@@ -55,27 +49,23 @@ $("#audio").on("canplaythrough", function(e){
 });
 
 $("#file").change(function(e){
-    var file = e.currentTarget.files[0];
+	i=0;
+    var file = e.currentTarget.files[i];
 	
 	$("#filename").text(file.name);
     $("#filetype").text(file.type);
-    $("#filesize").text(file.size);   
+    $("#filesize").text(file.size);  
+	
 	
     objectUrl = URL.createObjectURL(file);
     $("#audio-player").prop("src", objectUrl);
-	
+	$("ul").append('<li data-url="'+objectUrl+'" title="'+file.name+'" type="'+file.type+'">'+file.name+'</li>');
+	$("#audio-player").append('<source src="'+objectUrl+'title="'+file.name+'" type="'+file.type+'"/>');
+	i=i+1;
 });
 
-$(document).ready(function() {
-	$("#add").click(function() {
-		$("ul").append('<li id="filename" data-url="'+objectUrl+'"> </li>');
-			
-	});
-	$("#add").click(function() {
-		$("audio").append('<source id="filename" src="'+objectUrl+'" type="audio/mp3"/>');
-			
-	});
-});
+
+
 
 
 
