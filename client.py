@@ -42,17 +42,18 @@ class App(ttk.Frame):
         self.hyperlinkManager = tkHyperlinkManager.HyperlinkManager(self.textbox)
 
         self.currentfeed = ""
-
-        self.refreshbutton = Tkinter.Button(self, text="Refresh feed")
-        self.refreshbutton.grid(row=4, column=1, sticky=Tkinter.W)
+        self.currentfeedarticles = "(N/A)"
 
         self.previousbutton = Tkinter.Button(self, text="Previous article", command=self.previousButtonClick)
-        self.previousbutton.grid(row=4, column=2, sticky=Tkinter.W)
+        self.previousbutton.grid(row=4, column=1, sticky=Tkinter.W)
+
+        self.label = Tkinter.Label(self, text ="    ")
+        self.label.grid(row=4, column=2)
 
         self.nextbutton = Tkinter.Button(self, text="Next article", command=self.nextButtonClick)
-        self.nextbutton.grid(row=4, column=3, sticky=Tkinter.W)
+        self.nextbutton.grid(row=4, column=4, sticky=Tkinter.E)
 
-        self.deletefeedbutton = Tkinter.Button(self, text="Delete selcted feed")
+        self.deletefeedbutton = Tkinter.Button(self, text="Delete selcted feed", command = lambda: self.deleteFeed(self.lb.curselection()[0]))
         self.deletefeedbutton.grid(row = 4, column = 0, sticky = Tkinter.W)
 
         for i in self.feedslist:
@@ -95,9 +96,24 @@ class App(ttk.Frame):
                 if (string[0] == '#'):
                     continue
                 self.feedslist.append(string)
-        print "Number of feeds: " + str(len(self.feedslist))
-        for i in self.feedslist:
-            print i
+
+    def deleteFeed(self, index):
+        indx = int(index)
+        url = self.feedslist.pop(indx)
+        self.feedstitles.pop(indx)
+
+        f = open("feeds.txt", "r")
+        lines = f.readlines()
+        f.close()
+        
+
+        f = open("feeds.txt", "w")
+        for line in lines:
+            if line != url:
+                f.write(line)
+        f.close()
+
+        self.refreshFeedsList()
 
     def insertFeedToFile(self, feed):
         self.feedslist.append(feed)
@@ -123,6 +139,8 @@ class App(ttk.Frame):
         selection = widget.curselection()
         index = selection[0]
         self.currentfeed = feedparser.parse(self.feedslist[int(index)])
+        self.currentfeedarticles = len(self.currentfeed.entries)
+        self.label.config(text = str(self.currentarticleindex + 1) + "/" + str(self.currentfeedarticles))
         self.loadArticle()
 
 
@@ -147,6 +165,7 @@ class App(ttk.Frame):
 
     def nextButtonClick(self):
         self.currentarticleindex = self.currentarticleindex + 1
+        self.label.config(text = str(self.currentarticleindex + 1) + "/" + str(self.currentfeedarticles))
         self.loadArticle()
 
     def previousButtonClick(self):
@@ -155,7 +174,7 @@ class App(ttk.Frame):
         else:
             self.currentarticleindex = self.currentarticleindex - 1
             self.loadArticle()
-
+        self.label.config(text = str(self.currentarticleindex + 1) + "/" + str(self.currentfeedarticles))
 
 if __name__  == "__main__":
     #d = feedparser.parse(feedsList[0])
