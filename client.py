@@ -42,9 +42,13 @@ class App(ttk.Frame):
         self.hyperlinkManager = tkHyperlinkManager.HyperlinkManager(self.textbox)
 
         self.currentfeed = ""
+        self.currentfeedarticles = "(N/A)"
 
         self.previousbutton = Tkinter.Button(self, text="Previous article", command=self.previousButtonClick)
         self.previousbutton.grid(row=4, column=1, sticky=Tkinter.W)
+
+        self.label = Tkinter.Label(self, text ="    ")
+        self.label.grid(row=4, column=2)
 
         self.nextbutton = Tkinter.Button(self, text="Next article", command=self.nextButtonClick)
         self.nextbutton.grid(row=4, column=4, sticky=Tkinter.E)
@@ -95,7 +99,6 @@ class App(ttk.Frame):
 
     def deleteFeed(self, index):
         indx = int(index)
-        print indx
         url = self.feedslist.pop(indx)
         self.feedstitles.pop(indx)
 
@@ -103,7 +106,6 @@ class App(ttk.Frame):
         lines = f.readlines()
         f.close()
         
-        print lines[indx]
 
         f = open("feeds.txt", "w")
         for line in lines:
@@ -137,6 +139,8 @@ class App(ttk.Frame):
         selection = widget.curselection()
         index = selection[0]
         self.currentfeed = feedparser.parse(self.feedslist[int(index)])
+        self.currentfeedarticles = len(self.currentfeed.entries)
+        self.label.config(text = str(self.currentarticleindex + 1) + "/" + str(self.currentfeedarticles))
         self.loadArticle()
 
 
@@ -161,6 +165,7 @@ class App(ttk.Frame):
 
     def nextButtonClick(self):
         self.currentarticleindex = self.currentarticleindex + 1
+        self.label.config(text = str(self.currentarticleindex + 1) + "/" + str(self.currentfeedarticles))
         self.loadArticle()
 
     def previousButtonClick(self):
@@ -169,7 +174,7 @@ class App(ttk.Frame):
         else:
             self.currentarticleindex = self.currentarticleindex - 1
             self.loadArticle()
-
+        self.label.config(text = str(self.currentarticleindex + 1) + "/" + str(self.currentfeedarticles))
 
 if __name__  == "__main__":
     #d = feedparser.parse(feedsList[0])
