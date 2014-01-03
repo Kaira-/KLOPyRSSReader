@@ -1,3 +1,5 @@
+#!//usr/bin/env python
+
 #copyright by Effbot
 #http://effbot.org/zone/tkinter-text-hyperlink.htm
 

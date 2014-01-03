@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import feedparser
 import Tkinter
 import ttk
