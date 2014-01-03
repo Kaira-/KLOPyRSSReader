@@ -2,6 +2,8 @@ import feedparser
 import Tkinter
 import ttk
 import tkMessageBox
+import tkHyperlinkManager
+import webbrowser
 
 class App(ttk.Frame):
     def __init__(self, parent):
@@ -14,6 +16,7 @@ class App(ttk.Frame):
         self.initUI()
         
     def initUI(self):
+        self.currentarticleindex = 0
         self.menu = Tkinter.Menu(self.parent)
         self.root.config(menu = self.menu)
         self.fileMenu = Tkinter.Menu(self.menu)
@@ -36,8 +39,16 @@ class App(ttk.Frame):
         self.textbox.grid(row = 0, column = 1, columnspan=4, rowspan=4, sticky=Tkinter.NW)
         #self.textbox.insert(0.0, "Hello world!")
 
+        self.hyperlinkManager = tkHyperlinkManager.HyperlinkManager(self.textbox)
+
         self.refreshbutton = Tkinter.Button(self, text="Refresh feed")
         self.refreshbutton.grid(row=4, column=1, sticky=Tkinter.W)
+
+        self.previousbutton = Tkinter.Button(self, text="Previous article")
+        self.previousbutton.grid(row=4, column=2, sticky=Tkinter.W)
+
+        self.nextbutton = Tkinter.Button(self, text="Next article")
+        self.nextbutton.grid(row=4, column=3, sticky=Tkinter.W)
 
         self.deletefeedbutton = Tkinter.Button(self, text="Delete selcted feed")
         self.deletefeedbutton.grid(row = 4, column = 0, sticky = Tkinter.W)
@@ -98,15 +109,29 @@ class App(ttk.Frame):
         for i in self.feedstitles:
             self.lb.insert(Tkinter.END, i)
     
+    #refreshes the feed by selecting it and sets the current index to 0
     def onDouble(self, event):
+        self.currentarticleindex = 0
         widget = event.widget
         selection = widget.curselection()
         index = selection[0]
         self.textbox.config(state=Tkinter.NORMAL)
-        self.textbox.insert(Tkinter.END, self.feedstitles[int(index)] + "\r\n")
+        self.textbox.delete(1.0, Tkinter.END)
+        #self.textbox.insert(Tkinter.END, self.feedstitles[int(index)] + "\r\n")
+        d = feedparser.parse(self.feedslist[int(index)])
+        title = d.entries[self.currentarticleindex].title
+        link = d.entries[self.currentarticleindex].link
+        description = d.entries[self.currentarticleindex].description
+        description = description.replace("&#8217;", "\'").replace("&#8211;", "-")
+        self.textbox.insert(Tkinter.END, title, self.hyperlinkManager.add(lambda: self.linkClick1(link)))
+        self.textbox.insert(Tkinter.END, "\r\n\r\n")
+        self.textbox.insert(Tkinter.END, description)
         self.textbox.config(state=Tkinter.DISABLED)
 
-if __name__ == "__main__":
+    def linkClick(self, link):
+        webbrowser.open(link)
+
+if __name__  == "__main__":
     #d = feedparser.parse(feedsList[0])
     #print "Title: " + d.entries[0].title
     #print "Link: " + d.entries[0].link
