@@ -123,7 +123,7 @@ class App(ttk.Frame):
         link = d.entries[self.currentarticleindex].link
         description = d.entries[self.currentarticleindex].description
         description = description.replace("&#8217;", "\'").replace("&#8211;", "-")
-        self.textbox.insert(Tkinter.END, title, self.hyperlinkManager.add(lambda: self.linkClick1(link)))
+        self.textbox.insert(Tkinter.END, title, self.hyperlinkManager.add(lambda: self.linkClick(link)))
         self.textbox.insert(Tkinter.END, "\r\n\r\n")
         self.textbox.insert(Tkinter.END, description)
         self.textbox.config(state=Tkinter.DISABLED)
