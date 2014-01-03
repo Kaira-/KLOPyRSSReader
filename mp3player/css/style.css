@@ -103,7 +103,7 @@ div.audio-player {
     width: 48px;
     height: 48px;
     top: 70px;
-    left: 110px;
+    left: 200px;
 	background: transparent url(../img/play2.png) 0 0;
     
 }
@@ -113,7 +113,7 @@ div.audio-player {
     width: 48px;
     height: 48px;
     top: 70px;
-    left: 110px;
+    left: 200px;
 	background: transparent url(../img/pause2.png) 0 0;
     
 }
@@ -124,7 +124,7 @@ div.audio-player {
 	width: 48px;
     height: 48px;
     top: 70px;
-    left: 165px;
+    left: 300px;
 	background: transparent url(../img/next2.png) 0 0;
 }
 
@@ -134,7 +134,7 @@ div.audio-player {
 	width: 48px;
     height: 48px;
     top: 70px;
-    left: 57px;
+    left: 100px;
 	background: transparent url(../img/prev2.png) 0 0;
 }
 
@@ -165,7 +165,7 @@ div.audio-player {
 	width: 48px;
     height: 48px;
     top: 70px;
-    left: 220px;
+    left: 400px;
 	background: transparent url(../img/loop2.png) 0 0;
 }
 
@@ -174,7 +174,7 @@ div.audio-player {
 	width: 48px;
     height: 48px;
     top: 70px;
-    left: 220px;
+    left: 400px;
 	background: transparent url(../img/loop2.png) 0 0;
 }
  
@@ -288,11 +288,11 @@ div.audio-player {
 .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
     position: absolute;
     display: block;
-    width: 24px;
-    height: 24px;
-    top: -10px;
+    width: 32px;
+    height: 25px;
+    top: 5px;
 	
-    background: url(../img/handle.png) no-repeat;
+    background: url(../img/handle1.png) no-repeat;
 }
  
 .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle { 
