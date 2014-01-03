@@ -70,7 +70,7 @@ class App(ttk.Frame):
     def hello(self):
         top = self.top = Tkinter.Toplevel(self)
 
-        Tkinter.Label(top, text="Value").pack()
+        Tkinter.Label(top, text="URL:").pack()
         
         self.e = Tkinter.Entry(top, text="default")
         self.e.pack(padx=5)
