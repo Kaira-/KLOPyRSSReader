@@ -1,5 +1,6 @@
+#This is a commented line and will not be read into feeds
+#One feed per line
 http://feeds.feedburner.com/RockPaperShotgun.xml
 http://nedroid.com/feed/
-#This is a comment line
 http://feeds.arstechnica.com/arstechnica/index?format=xml
 http://www.iltalehti.fi/rss.xml

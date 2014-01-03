@@ -73,7 +73,9 @@ class App(ttk.Frame):
         self.e.pack(padx=5)
 
         b = Tkinter.Button(top, text="OK", command=self.ok)
-        b.pack(pady=5)
+        c = Tkinter.Button(top, text="Cancel", command = self.cancel)
+        b.pack()
+        c.pack()
 
     def ok(self):
         feed = self.e.get()
@@ -81,6 +83,9 @@ class App(ttk.Frame):
         
         self.insertFeedToFile(feed)
 
+        self.top.destroy()
+
+    def cancel(self):
         self.top.destroy()
   
     def readFeedsFromFile(self):
